@@ -1,10 +1,10 @@
 # Bootstrap for Sass
 
-[![Build Status](https://secure.travis-ci.org/thomas-mcdonald/bootstrap-sass.png?branch=master)](http://travis-ci.org/thomas-mcdonald/bootstrap-sass)
-
 `bootstrap-sass` is an Sass-powered version of [Twitter's Bootstrap](http://github.com/twitter/bootstrap), ready to drop right into your Sass powered applications.
 
-Enjoy.
+##Fork notes
+
+The purpose of this fork is to replace the twitter bootstrap grid with SUSY, thereby obtaining a superior experience. So far, nothing has changed, but it will.
 
 ## Usage
 
