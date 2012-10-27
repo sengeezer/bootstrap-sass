@@ -1,41 +1,34 @@
 //
 // Scaffolding
-// --------------------------------------------------
-
 
 // Body reset
-// -------------------------
 
 body {
   margin: 0;
-  font-family: $baseFontFamily;
-  font-size: $baseFontSize;
+  font: {
+	family: $baseFontFamily;
+  	size: $baseFontSize;
+  }
   line-height: $baseLineHeight;
   color: $textColor;
   background-color: $bodyBackground;
 }
 
-
 // Links
-// -------------------------
 
 a {
   color: $linkColor;
   text-decoration: none;
-}
-a:hover {
+  &:hover {
   color: $linkColorHover;
   text-decoration: underline;
+  }
 }
-
 
 // Images
-// -------------------------
 
 // Rounded corners
-.img-rounded {
-  @include border-radius(6px);
-}
+.img-rounded { @include border-radius(6px); }
 
 // Add polaroid-esque trim
 .img-polaroid {
@@ -47,6 +40,6 @@ a:hover {
 }
 
 // Perfect circle
-.img-circle {
+.img-circle { 
   @include border-radius(500px); // crank the border-radius so it works with most reasonably sized images
 }
