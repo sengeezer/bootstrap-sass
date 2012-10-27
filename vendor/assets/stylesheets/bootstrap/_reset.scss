@@ -1,11 +1,7 @@
 //
-// Modals
-// Adapted from http://github.com/necolas/normalize.css
-// --------------------------------------------------
-
+// Modals - Adapted from http://github.com/necolas/normalize.css
 
 // Display in IE6-9 and FF3
-// -------------------------
 
 article,
 aside,
@@ -16,12 +12,9 @@ footer,
 header,
 hgroup,
 nav,
-section {
-  display: block;
-}
+section { display: block; }
 
 // Display block in IE6-9 and FF3
-// -------------------------
 
 audio,
 canvas,
@@ -32,32 +25,22 @@ video {
 }
 
 // Prevents modern browsers from displaying 'audio' without controls
-// -------------------------
 
-audio:not([controls]) {
-    display: none;
-}
+audio:not([controls]) { display: none; }
 
 // Base settings
-// -------------------------
 
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
-// Focus states
-a:focus {
-  @include tab-focus();
-}
-// Hover & Active
+
+a:focus { @include tab-focus(); }
 a:hover,
-a:active {
-  outline: 0;
-}
+a:active { outline: 0; }
 
 // Prevents sub and sup affecting line-height in all browsers
-// -------------------------
 
 sub,
 sup {
@@ -66,15 +49,10 @@ sup {
   line-height: 0;
   vertical-align: baseline;
 }
-sup {
-  top: -0.5em;
-}
-sub {
-  bottom: -0.25em;
-}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
 
 // Img border in a's and image quality
-// -------------------------
 
 img {
   /* Responsive images (ensure images don't scale beyond their parents) */
@@ -87,12 +65,9 @@ img {
 }
 
 // Prevent max-width from affecting Google Maps
-#map_canvas img {
-  max-width: none;
-}
+#map_canvas img { max-width: none; }
 
 // Forms
-// -------------------------
 
 // Font size in all browsers, margin changes, misc consistency
 button,
@@ -121,9 +96,7 @@ input[type="submit"] {
   -webkit-appearance: button; // Style clickable inputs in iOS
 }
 input[type="search"] { // Appearance in Safari/Chrome
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
+  @include box-sizing(content-box);
   -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-decoration,

@@ -1,13 +1,9 @@
 //
 // Mixins
-// --------------------------------------------------
-
 
 // UTILITY MIXINS
-// --------------------------------------------------
 
 // Clearfix
-// --------
 // For clearing floats like a boss h5bp.com/q
 @mixin clearfix() {
   *zoom: 1;
@@ -19,14 +15,11 @@
     // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
     line-height: 0;
   }
-  &:after {
-    clear: both;
-  }
+  &:after { clear: both; }
 }
 .clearfix { @include clearfix(); }
 
 // Webkit-style focus
-// ------------------
 @mixin tab-focus() {
   // Default
   outline: thin dotted #333;
@@ -36,17 +29,17 @@
 }
 
 // Center-align a block level element
-// ----------------------------------
 @mixin center-block() {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: {
+	left: auto;
+  	right: auto;
+  }
 }
 
 // IE7 inline-block
-// ----------------
 @mixin ie7-inline-block() {
-  *display: inline; /* IE7 inline-block hack */
+  *display: inline;
   *zoom: 1;
 }
 
@@ -58,18 +51,12 @@
 // instead of the 1 space in other browsers.
 @mixin ie7-restore-left-whitespace() {
   *margin-left: .3em;
-
-  &:first-child {
-    *margin-left: 0;
-  }
+  &:first-child {  *margin-left: 0; }
 }
 
-@mixin ie7-restore-right-whitespace() {
-  *margin-right: .3em;
-}
+@mixin ie7-restore-right-whitespace() {  *margin-right: .3em; }
 
 // Sizing shortcuts
-// -------------------------
 @mixin size($height, $width) {
   width: $width;
   height: $height;
@@ -79,21 +66,13 @@
 }
 
 // Placeholder text
-// -------------------------
 @mixin placeholder($color: $placeholderText) {
-  &:-moz-placeholder {
-    color: $color;
-  }
-  &:-ms-input-placeholder {
-    color: $color;
-  }
-  &::-webkit-input-placeholder {
-    color: $color;
-  }
+  &:-moz-placeholder { color: $color; }
+  &:-ms-input-placeholder { color: $color; }
+  &::-webkit-input-placeholder { color: $color; }
 }
 
 // Text overflow
-// -------------------------
 // Requires inline-block or block for proper styling
 @mixin text-overflow() {
   overflow: hidden;
@@ -102,7 +81,6 @@
 }
 
 // CSS image replacement
-// -------------------------
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 @mixin hide-text() {
   font: 0/0 a;
@@ -112,18 +90,10 @@
   border: 0;
 }
 
-
 // FONTS
-// --------------------------------------------------
-@mixin font-family-serif() {
-  font-family: $serifFontFamily;
-}
-@mixin font-family-sans-serif() {
-  font-family: $sansFontFamily;
-}
-@mixin font-family-monospace() {
-  font-family: $monoFontFamily;
-}
+@mixin font-family-serif() { font-family: $serifFontFamily; }
+@mixin font-family-sans-serif() { font-family: $sansFontFamily; }
+@mixin font-family-monospace() { font-family: $monoFontFamily; }
 @mixin font-shorthand($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   font-size: $size;
   font-weight: $weight;
@@ -142,37 +112,29 @@
   @include font-shorthand($size, $weight, $lineHeight);
 }
 
-
 // FORMS
-// --------------------------------------------------
 
 // Block level inputs
 // This is also a class, defined at the bottom of the file
 @mixin input-block-level() {
   display: block;
   width: 100%;
-  min-height: 30px;        // Make inputs at least the height of their button counterpart
+  min-height: 30px; // Make inputs at least the height of their button counterpart
   @include box-sizing(border-box); // Makes inputs behave like true block-level elements
 }
-
-
 
 // Mixin for form field states
 @mixin formFieldState($textColor: #555, $borderColor: #ccc, $backgroundColor: #f5f5f5) {
   // Set the text color
   > label,
   .help-block,
-  .help-inline {
-    color: $textColor;
-  }
+  .help-inline { color: $textColor; }
   // Style inputs accordingly
   .checkbox,
   .radio,
   input,
   select,
-  textarea {
-    color: $textColor;
-  }
+  textarea { color: $textColor; }
   input,
   select,
   textarea {
@@ -192,124 +154,8 @@
   }
 }
 
-
-
 // CSS3 PROPERTIES
-// --------------------------------------------------
-
-// Border Radius
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-          border-radius: $radius;
-}
-
-// Single Corner Border Radius
-@mixin border-top-left-radius($radius) {
-  -webkit-border-top-left-radius: $radius;
-      -moz-border-radius-topleft: $radius;
-          border-top-left-radius: $radius;
-}
-@mixin border-top-right-radius($radius) {
-  -webkit-border-top-right-radius: $radius;
-      -moz-border-radius-topright: $radius;
-          border-top-right-radius: $radius;
-}
-@mixin border-bottom-right-radius($radius) {
-  -webkit-border-bottom-right-radius: $radius;
-      -moz-border-radius-bottomright: $radius;
-          border-bottom-right-radius: $radius;
-}
-@mixin border-bottom-left-radius($radius) {
-  -webkit-border-bottom-left-radius: $radius;
-      -moz-border-radius-bottomleft: $radius;
-          border-bottom-left-radius: $radius;
-}
-
-// Single Side Border Radius
-@mixin border-top-radius($radius) {
-  @include border-top-right-radius($radius);
-  @include border-top-left-radius($radius);
-}
-@mixin border-right-radius($radius) {
-  @include border-top-right-radius($radius);
-  @include border-bottom-right-radius($radius);
-}
-@mixin border-bottom-radius($radius) {
-  @include border-bottom-right-radius($radius);
-  @include border-bottom-left-radius($radius);
-}
-@mixin border-left-radius($radius) {
-  @include border-top-left-radius($radius);
-  @include border-bottom-left-radius($radius);
-}
-
-// Drop shadows
-@mixin box-shadow($shadow) {
-  -webkit-box-shadow: $shadow;
-     -moz-box-shadow: $shadow;
-          box-shadow: $shadow;
-}
-
-// Transitions
-@mixin transition($transition) {
-  -webkit-transition: $transition;
-     -moz-transition: $transition;
-       -o-transition: $transition;
-          transition: $transition;
-}
-@mixin transition-delay($transition-delay) {
-  -webkit-transition-delay: $transition-delay;
-     -moz-transition-delay: $transition-delay;
-       -o-transition-delay: $transition-delay;
-          transition-delay: $transition-delay;
-}
-
-// Transformations
-@mixin rotate($degrees) {
-  -webkit-transform: rotate($degrees);
-     -moz-transform: rotate($degrees);
-      -ms-transform: rotate($degrees);
-       -o-transform: rotate($degrees);
-          transform: rotate($degrees);
-}
-@mixin scale($ratio) {
-  -webkit-transform: scale($ratio);
-     -moz-transform: scale($ratio);
-      -ms-transform: scale($ratio);
-       -o-transform: scale($ratio);
-          transform: scale($ratio);
-}
-@mixin translate($x, $y) {
-  -webkit-transform: translate($x, $y);
-     -moz-transform: translate($x, $y);
-      -ms-transform: translate($x, $y);
-       -o-transform: translate($x, $y);
-          transform: translate($x, $y);
-}
-@mixin skew($x, $y) {
-  -webkit-transform: skew($x, $y);
-     -moz-transform: skew($x, $y);
-      -ms-transform: skewX($x) skewY($y); // See https://github.com/twitter/bootstrap/issues/4885
-       -o-transform: skew($x, $y);
-          transform: skew($x, $y);
-}
-@mixin translate3d($x, $y, $z) {
-  -webkit-transform: translate3d($x, $y, $z);
-     -moz-transform: translate3d($x, $y, $z);
-       -o-transform: translate3d($x, $y, $z);
-          transform: translate3d($x, $y, $z);
-}
-
-// Backface visibility
-// Prevent browsers from flickering when using CSS 3D transforms.
-// Default value is `visible`, but can be changed to `hidden
-// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
-@mixin backface-visibility($visibility){
-	-webkit-backface-visibility: $visibility;
-	   -moz-backface-visibility: $visibility;
-	        backface-visibility: $visibility;
-}
+// Removed, Compass can handle this
 
 // Background clipping
 // Heads up: FF 3.6 and under need "padding" instead of "padding-box"
@@ -376,8 +222,6 @@
   opacity: $opacity;
   filter: alpha(opacity=#{$opacity * 100});
 }
-
-
 
 // BACKGROUNDS
 // --------------------------------------------------
