@@ -9,7 +9,8 @@
 // Converted to Sass by @thomasmcdonald_, and distributed as bootstrap-sass
 
 // Core variables and mixins
-@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+// Modify variables for custom colors, font-sizes, etc
+@import "bootstrap/variables";
 @import "bootstrap/mixins";
 
 // CSS Reset
@@ -36,7 +37,8 @@
 // Components: Buttons & Alerts
 @import "bootstrap/buttons";
 @import "bootstrap/button-groups";
-@import "bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in _buttons.scss
+// Note: alerts share common CSS with buttons and thus have styles in _buttons.scss
+@import "bootstrap/alerts";
 
 // Components: Nav
 @import "bootstrap/navs";
@@ -58,5 +60,5 @@
 @import "bootstrap/carousel";
 @import "bootstrap/hero-unit";
 
-// Utility classes
-@import "bootstrap/utilities"; // Has to be last to override when necessary
+// Utility classes - have to be last to override when necessary
+@import "bootstrap/utilities";
