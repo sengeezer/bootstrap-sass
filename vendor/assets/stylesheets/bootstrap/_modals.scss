@@ -1,15 +1,13 @@
 //
 // Modals
-// --------------------------------------------------
-
 
 // Recalculate z-index where appropriate,
 // but only apply to elements within modal
 .modal-open modal {
   .dropdown-menu {  z-index: $zindexDropdown + $zindexModal; }
   .dropdown.open { *z-index: $zindexDropdown + $zindexModal; }
-  .popover       {  z-index: $zindexPopover  + $zindexModal; }
-  .tooltip       {  z-index: $zindexTooltip  + $zindexModal; }
+  .popover {  z-index: $zindexPopover  + $zindexModal; }
+  .tooltip {  z-index: $zindexTooltip  + $zindexModal; }
 }
 
 // Background
@@ -26,9 +24,7 @@
 }
 
 .modal-backdrop,
-.modal-backdrop.fade.in {
-  @include opacity(0.8);
-}
+.modal-backdrop.fade.in { @include opacity(0.8); }
 
 // Base modal
 .modal {
@@ -71,9 +67,7 @@
   padding: 15px;
 }
 // Remove bottom margin if need be
-.modal-form {
-  margin-bottom: 0;
-}
+.modal-form { margin-bottom: 0; }
 
 // Footer (for actions)
 .modal-footer {
@@ -88,11 +82,11 @@
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
-    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+    margin: {
+	  left: 5px;
+      bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  	}
   }
   // but override that for button groups
-  .btn-group .btn + .btn {
-    margin-left: -1px;
-  }
+  .btn-group .btn + .btn { margin-left: -1px; }
 }

@@ -1,7 +1,5 @@
 //
 // Hero unit
-// --------------------------------------------------
-
 
 .hero-unit {
   padding: 60px;
@@ -16,9 +14,11 @@
     letter-spacing: -1px;
   }
   p {
-    font-size: 18px;
-    font-weight: 200;
-    line-height: $baseLineHeight * 1.5;
+    font: {
+	  size: 18px;
+      weight: 200;
+    }
+	line-height: $baseLineHeight * 1.5;
     color: $heroUnitLeadColor;
   }
 }
