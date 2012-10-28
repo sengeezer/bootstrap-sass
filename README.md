@@ -4,7 +4,7 @@
 
 ##Fork notes
 
-The purpose of this fork is to replace the twitter bootstrap grid with SUSY, thereby obtaining a superior experience. So far, nothing has changed, but it will.
+The purpose of this fork is to replace the twitter bootstrap grid with SUSY, thereby obtaining a superior experience. So far, nothing much has changed, but it will.
 
 ## Usage
 
