@@ -48,7 +48,6 @@
 	top: 14px;
     bottom: 14px;
   }
+  > p, > ul { margin-bottom: 0; }
+  p + p { margin-top: 5px; }
 }
-.alert-block > p,
-.alert-block > ul { margin-bottom: 0; }
-.alert-block p + p { margin-top: 5px; }
