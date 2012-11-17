@@ -12,18 +12,18 @@
 
 [class^="icon-"],
 [class*=" icon-"] {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  @include ie7-restore-right-whitespace();
-  line-height: 14px;
-  vertical-align: text-top;
-  background: {
-	image: $iconSpritePath;
-  	position: 14px 14px;
-  	repeat: no-repeat;
-  }
-  margin-top: 1px;
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	@include ie7-restore-right-whitespace();
+	line-height: 14px;
+	vertical-align: text-top;
+	background: {
+		image: $iconSpritePath;
+		position: 14px 14px;
+		repeat: no-repeat;
+	}
+	margin-top: 1px;
 }
 
 // White icons with optional class, or on hover/active states of certain elements
@@ -83,7 +83,7 @@
 .icon-volume-up { background-position: -408px -24px; }
 .icon-qrcode { background-position: -432px -24px; }
 .icon-barcode { background-position: -456px -24px; }
-                   
+
 .icon-tag { background-position: 0 -48px; }
 .icon-tags { background-position: -25px -48px; } // 1px off
 .icon-book { background-position: -48px -48px; }
@@ -125,7 +125,7 @@
 .icon-eject { background-position: -408px -72px; }
 .icon-chevron-left { background-position: -432px -72px; }
 .icon-chevron-right { background-position: -456px -72px; }
-                   
+
 .icon-plus-sign { background-position: 0      -96px; }
 .icon-minus-sign { background-position: -24px  -96px; }
 .icon-remove-sign { background-position: -48px  -96px; }
