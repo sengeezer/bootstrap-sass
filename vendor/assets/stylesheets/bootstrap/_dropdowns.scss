@@ -21,6 +21,13 @@
 	.caret {
 		margin: { top: 8px; left: 2px; }
 	}
+	// Increase padding from 15px to 20px on sides
+	.dropdown-menu .nav-header {
+		padding: {
+			left: 20px;
+			right: 20px;
+		}
+	}
 }
 
 // The caret makes the toggle a bit too tall in IE7
@@ -152,42 +159,35 @@
 
 // Sub menus
 
-.dropdown-submenu { position: relative; }
-.dropdown-submenu > .dropdown-menu {
-	top: 0;
-	left: 100%;
-	margin-top: -6px;
-	margin-left: -1px;
-	@include border-radius(0 6px 6px 6px);
-}
-.dropdown-submenu:hover .dropdown-menu { display: block; }
-
-.dropdown-submenu > a:after {
-	display: block;
-	content: " ";
-	float: right;
-	width: 0;
-	height: 0;
-	border: {
-		color: transparent;
-		style: solid;
-		width: 5px 0 5px 5px;
-		left-color: darken($dropdownBackground, 20%);
+.dropdown-submenu {
+	position: relative;
+	> .dropdown-menu {
+		top: 0;
+		left: 100%;
+		margin-top: -6px;
+		margin-left: -1px;
+		@include border-radius(0 6px 6px 6px);
 	}
-	margin: {
-		top: 5px;
-		right: -10px;
+	&:hover {
+		.dropdown-menu { display: block; }
+		> a:after { border-left-color: $dropdownLinkColorHover; }
 	}
-}
-.dropdown-submenu:hover > a:after { border-left-color: $dropdownLinkColorHover; }
-
-// Tweak nav headers
-
-// Increase padding from 15px to 20px on sides
-.dropdown .dropdown-menu .nav-header {
-	padding: {
-		left: 20px;
-		right: 20px;
+	> a:after {
+		display: block;
+		content: " ";
+		float: right;
+		width: 0;
+		height: 0;
+		border: {
+			color: transparent;
+			style: solid;
+			width: 5px 0 5px 5px;
+			left-color: darken($dropdownBackground, 20%);
+		}
+		margin: {
+			top: 5px;
+			right: -10px;
+		}
 	}
 }
 
