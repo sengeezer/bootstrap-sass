@@ -33,16 +33,14 @@
 		@include transition(background-position .1s linear);
 	}
 	&:focus { @include tab-focus(); }
-	&.active,
-	&:active {
+	&.active, &:active {
 		background-color: darken($white, 10%);
 		background-color: darken($white, 15%) \9;
 		background-image: none;
 		outline: 0;
 		@include box-shadow(#{inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)});
 	}
-	&.disabled,
-	&[disabled] {
+	&.disabled, &[disabled] {
 		cursor: default;
 		background-color: darken($white, 10%);
 		background-image: none;
@@ -87,17 +85,19 @@
 }
 
 // Specificity overrides
-input[type="submit"], input[type="reset"],
-input[type="button"] {
-	&.btn-block { width: 100%; }
+input {
+	&[type="submit"], &[type="reset"], &[type="button"] {
+		&.btn-block { width: 100%; }
+	}
 }
 
 // Alternate buttons
 
 // Provide *some* extra contrast for those who can get it
-.btn-primary.active, .btn-warning.active,
-.btn-danger.active, .btn-success.active,
-.btn-info.active, .btn-inverse.active { color: rgba(255,255,255,.75); }
+.btn-primary, .btn-warning, .btn-danger,
+.btn-success, .btn-info, .btn-inverse {
+	&.active { color: rgba(255,255,255,.75); }
+}
 
 // Set the backgrounds
 

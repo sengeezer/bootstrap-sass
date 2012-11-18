@@ -5,11 +5,11 @@
 
 @media (max-width: 979px) {
 
-  // UNFIX THE TOPBAR
+	// UNFIX THE TOPBAR
 
-  // Remove any padding from the body
-  body { padding-top: 0; }
-  // Unfix the navbars
+	// Remove any padding from the body
+	body { padding-top: 0; }
+	// Unfix the navbars
 	.navbar-fixed-top {
 		position: static;
 		margin-bottom: $baseLineHeight;
@@ -20,37 +20,37 @@
 		margin-top: $baseLineHeight;
 		.navbar-inner { padding: 5px; }
 	}
-  
-  .navbar {
-	.container {
-    	width: auto;
-    	padding: 0;
-  	}
-	// Account for brand name
-	.brand {
-	    padding-left: 10px;
-	    padding-right: 10px;
-	    margin: 0 0 0 -5px;
-	}
-	// Pull right (secondary) nav content
-	.nav-collapse .nav.pull-right {
-	    float: none;
-	    margin-left: 0;
-	}
-	// Navbar button
-	.btn-navbar { display: block; }
-  }
 
-  // COLLAPSIBLE NAVBAR
+	.navbar {
+		.container {
+			width: auto;
+			padding: 0;
+		}
+		// Account for brand name
+		.brand {
+			padding-left: 10px;
+			padding-right: 10px;
+			margin: 0 0 0 -5px;
+		}
+		// Pull right (secondary) nav content
+		.nav-collapse .nav.pull-right {
+			float: none;
+			margin-left: 0;
+		}
+		// Navbar button
+		.btn-navbar { display: block; }
+	}
 
-  // Nav collapse clears brand
+	// COLLAPSIBLE NAVBAR
+
+	// Nav collapse clears brand
 	.nav-collapse {
 		clear: both;
 		overflow: hidden;
-	    height: 0;
+		height: 0;
 		.nav {
-	    	float: none;
-	    	margin: 0 0 ($baseLineHeight / 2);
+			float: none;
+			margin: 0 0 ($baseLineHeight / 2);
 			// Block-level the nav
 			> li {
 				float: none;
@@ -58,32 +58,32 @@
 				> a {
 					margin-bottom: 2px;
 					padding: 9px 15px;
-			    	font-weight: bold;
-			    	color: $navbarLinkColor;
-			    	@include border-radius(3px);
+					font-weight: bold;
+					color: $navbarLinkColor;
+					@include border-radius(3px);
 					&:hover { background-color: $navbarBackground; }
 				}
 				> .dropdown-menu { &:before, &:after { display: none; }}
 			}
 			> .divider-vertical { display: none; }
 			.nav-header {
-		    	color: $navbarText;
-		    	text-shadow: none;
+				color: $navbarText;
+				text-shadow: none;
 			}
 		}
 		.dropdown-menu {
 			a {
-	    		padding: 9px 15px;
-	    		font-weight: bold;
-	    		color: $navbarLinkColor;
-	    		@include border-radius(3px);
+				padding: 9px 15px;
+				font-weight: bold;
+				color: $navbarLinkColor;
+				@include border-radius(3px);
 			}
 			li + li a { margin-bottom: 2px; }
 		}
 		.btn {
-		    padding: 4px 10px 4px;
-		    font-weight: normal;
-		    @include border-radius(4px);
+			padding: 4px 10px 4px;
+			font-weight: normal;
+			@include border-radius(4px);
 		}
 		// Buttons in the navbar
 		&.in .btn-group {
@@ -94,61 +94,61 @@
 		.dropdown-menu {
 			position: static;
 			top: auto;
-		    left: auto;
-		    float: none;
-		    display: block;
-		    max-width: none;
-		    margin: 0 15px;
-		    padding: 0;
-		    background-color: transparent;
-		    border: none;
-		    @include border-radius(0);
-		    @include box-shadow(none);
+			left: auto;
+			float: none;
+			display: block;
+			max-width: none;
+			margin: 0 15px;
+			padding: 0;
+			background-color: transparent;
+			border: none;
+			@include border-radius(0);
+			@include box-shadow(none);
 			&:before, &:after { display: none; } 
 		}
 		// Forms in navbar
 		.navbar-form, .navbar-search {
 			float: none;
-		    padding: ($baseLineHeight / 2) 15px;
-		    margin: ($baseLineHeight / 2) 0;
-		    border: {
+			padding: ($baseLineHeight / 2) 15px;
+			margin: ($baseLineHeight / 2) 0;
+			border: {
 				top: 1px solid $navbarBackground;
-		    	bottom: 1px solid $navbarBackground;
+				bottom: 1px solid $navbarBackground;
 			}
-		    @include box-shadow(#{inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)});
-		  }
-		  // Hide everything in the navbar save .brand and toggle button
-		  &.collapse {
-		    overflow: hidden;
-		    height: 0;
-		  }
-  	}
+			@include box-shadow(#{inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)});
+		}
+		// Hide everything in the navbar save .brand and toggle button
+		&.collapse {
+			overflow: hidden;
+			height: 0;
+		}
+	}
 	.navbar-inverse .nav-collapse {
 		.nav > li > a:hover,
 		.dropdown-menu a:hover { background-color: $navbarInverseBackground; }
 		.navbar-form, .navbar-search {
 			border-top-color: $navbarInverseBackground;
-		    border-bottom-color: $navbarInverseBackground;
+			border-bottom-color: $navbarInverseBackground;
 		}
 	}
 
-  // STATIC NAVBAR
+	// STATIC NAVBAR
 
-  .navbar-static .navbar-inner {
-    padding: {
-	  left:  10px;
-      right: 10px;
+	.navbar-static .navbar-inner {
+		padding: {
+			left:  10px;
+			right: 10px;
+		}
 	}
-  }
 }
 
 // DEFAULT DESKTOP
 
 @media (min-width: 980px) {
 
-  // Required to make the collapsing navbar work on regular desktops
-  .nav-collapse.collapse {
-    height: auto !important;
-    overflow: visible !important;
-  }
+	// Required to make the collapsing navbar work on regular desktops
+	.nav-collapse.collapse {
+		height: auto !important;
+		overflow: visible !important;
+	}
 }
