@@ -1,0 +1,40 @@
+//
+// Accordion
+
+// Parent container
+.accordion { margin-bottom: $baseLineHeight; }
+
+// Group == heading + body
+.accordion-group {
+<<<<<<< HEAD:vendor/assets/stylesheets/bootstrap/_accordion.scss
+	margin-bottom: 2px;
+	border: 1px solid #e5e5e5;
+	@include border-radius(4px);
+=======
+  margin-bottom: 2px;
+  border: 1px solid #e5e5e5;
+  @include border-radius($baseBorderRadius);
+>>>>>>> 776583f... Merged in twitter-bootstrap-sass 2.2.1 and removed old files.:vendor/assets/stylesheets/_accordion.scss
+}
+.accordion-heading {
+	border-bottom: 0;
+	.accordion-toggle { 
+		display: block;
+		padding: 8px 15px;
+	}
+}
+
+// General toggle styles
+.accordion-toggle { cursor: pointer; }
+
+// Inner needs the styles because you can't animate properly with any styles on the element
+.accordion-inner {
+<<<<<<< HEAD:vendor/assets/stylesheets/bootstrap/_accordion.scss
+	padding: 9px 15px;
+	border-top: 1px solid #e5e5e5;
+}
+=======
+  padding: 9px 15px;
+  border-top: 1px solid #e5e5e5;
+}
+>>>>>>> 776583f... Merged in twitter-bootstrap-sass 2.2.1 and removed old files.:vendor/assets/stylesheets/_accordion.scss
