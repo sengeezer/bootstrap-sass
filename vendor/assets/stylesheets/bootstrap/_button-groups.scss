@@ -4,6 +4,8 @@
 // Make the div behave like a button
 .btn-group {
 	position: relative;
+	display: inline-block;
+	@include ie7-inline-block();
 	font-size: 0; // remove as part 1 of font-size inline-block hack
 	vertical-align: middle; // match .btn alignment given font-size hack above
 	white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
@@ -41,7 +43,7 @@
 				left: 8px;
 				right: 8px;
 			}
-			@include box-shadow(#{inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)});
+			@include box-shadow(inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05));
 			*padding-top: 5px;
 			*padding-bottom: 5px;
 		}
@@ -90,7 +92,7 @@
 		.dropdown-toggle {
 			outline: 0;
 			background-image: none;
-			@include box-shadow(#{inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)});
+			@include box-shadow(inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05));
 		}
 		.btn.dropdown-toggle { background-color: $btnBackgroundHighlight; }
 		.btn-primary.dropdown-toggle { background-color: $btnPrimaryBackgroundHighlight; }
@@ -109,12 +111,10 @@
 		top: $baseLineHeight / 2;
 		bottom: $baseLineHeight / 2;
 	}
-	.btn-group {
-		display: inline-block;
-		@include ie7-inline-block();
-		+ .btn { margin-left: 5px; }
+	.btn-group + .btn { margin-left: 5px; }
+	.btn {
+		+ .btn, + .btn-group { margin-left: 5px; }
 	}
-	.btn { + .btn, + .btn-group { margin-left: 5px; } }
 }
 
 // Reposition the caret
@@ -134,10 +134,7 @@
 	border-top-width:   5px;
 }
 // Upside down carets for .dropup
-.dropup .btn-large .caret {
-	border-bottom: 5px solid $black;
-	border-top: 0;
-}
+.dropup .btn-large .caret { border-bottom-width: 5px; }
 
 // Account for other colors
 .btn-primary, .btn-warning,
