@@ -39,28 +39,30 @@ label {
 }
 
 input {
-	@include font-shorthand($baseFontSize,normal,$baseLineHeight); font-family: $baseFontFamily;
+	@include font-shorthand($baseFontSize, normal, $baseLineHeight);
+	font-family: $baseFontFamily;
 	&[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"],
 	&[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"],
 	&[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"] {
 		display: inline-block;
 		height: $baseLineHeight;
 		padding: 4px 6px;
-		margin-bottom: 9px;
+		margin-bottom: $baseLineHeight / 2;
 		font-size: $baseFontSize;
 		line-height: $baseLineHeight;
 		color: $gray;
 		@include border-radius($inputBorderRadius);
+		vertical-align: middle;
 		background-color: $inputBackground;
 		border: 1px solid $inputBorder;
-		@include box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075)});
-		@include transition(#{border linear .2s, box-shadow linear .2s});
+		@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+		@include transition(border linear .2s, box-shadow linear .2s);
 		// Focus state
 		&:focus {
 			border-color: rgba(82,168,236,.8);
 			outline: 0;
 			outline: thin dotted \9; /* IE6-9 */
-			@include box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)});
+			@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6));
 		}
 	}
 	width: 206px; // plus 12px padding and 2px border
@@ -78,9 +80,9 @@ input {
 	}
 	&[type="file"] {
 		width: auto; // Override of generic input selector
-		height: 30px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+		height: $inputHeight; /* In IE7, the height of the select element cannot be changed by height, only font-size */
 		*margin-top: 4px; /* For IE7, add top margin to align select with labels */
-		line-height: 30px;
+		line-height: $inputHeight;
 		&:focus { @include tab-focus(); }
 	}
 	@include placeholder();
@@ -89,7 +91,8 @@ input {
 button { @include font-shorthand($baseFontSize,normal,$baseLineHeight); font-family: $baseFontFamily; }
 
 select {
-	@include font-shorthand($baseFontSize,normal,$baseLineHeight); font-family: $baseFontFamily;
+	@include font-shorthand($baseFontSize,normal,$baseLineHeight);
+	font-family: $baseFontFamily;
 	display: inline-block;
 	height: $baseLineHeight;
 	padding: 4px 6px;
@@ -98,9 +101,9 @@ select {
 	line-height: $baseLineHeight;
 	color: $gray;
 	@include border-radius($inputBorderRadius);
-	height: 30px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+	height: $inputHeight; /* In IE7, the height of the select element cannot be changed by height, only font-size */
 	*margin-top: 4px; /* For IE7, add top margin to align select with labels */
-	line-height: 30px;
+	line-height: $inputHeight;
 	width: 220px; // default input width + 10px of padding that doesn't get applied
 	border: 1px solid $inputBorder;
 	background-color: $inputBackground; // Chrome on Linux and Mobile Safari need background-color
@@ -109,7 +112,8 @@ select {
 }
 
 textarea {
-	@include font-shorthand($baseFontSize,normal,$baseLineHeight); font-family: $baseFontFamily;
+	@include font-shorthand($baseFontSize,normal,$baseLineHeight);
+	font-family: $baseFontFamily;
 	display: inline-block;
 	height: auto;
 	padding: 4px 6px;
@@ -121,14 +125,14 @@ textarea {
 	width: 206px; // plus 12px padding and 2px border
 	background-color: $inputBackground;
 	border: 1px solid $inputBorder;
-	@include box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075)});
-	@include transition(#{border linear .2s, box-shadow linear .2s});
+	@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+	@include transition(border linear .2s, box-shadow linear .2s);
 	// Focus state
 	&:focus {
 		border-color: rgba(82,168,236,.8);
 		outline: 0;
 		outline: thin dotted \9; /* IE6-9 */
-		@include box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)});
+		@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6));
 	}
 	@include placeholder();
 }
@@ -143,18 +147,18 @@ textarea {
 	@include border-radius($inputBorderRadius);
 	width: 206px; // plus 12px padding and 2px border
 	border: 1px solid $inputBorder;
-	@include transition(#{border linear .2s, box-shadow linear .2s});
+	@include transition(border linear .2s, box-shadow linear .2s);
 	// Focus state
 	&:focus {
 		border-color: rgba(82,168,236,.8);
 		outline: 0;
 		outline: thin dotted \9; /* IE6-9 */
-		@include box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)});
+		@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6));
 	}
 	color: $grayLight;
 	background-color: darken($inputBackground, 1%);
 	border-color: $inputBorder;
-	@include box-shadow(#{inset 0 1px 2px rgba(0,0,0,.025)});
+	@include box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
 	cursor: not-allowed;
 	overflow: hidden; // prevent text from wrapping, but still cut it off like an input does
 	white-space: nowrap;
@@ -166,7 +170,7 @@ textarea {
 	color: $grayLight;
 	background-color: darken($inputBackground, 1%);
 	border-color: $inputBorder;
-	@include box-shadow(#{inset 0 1px 2px rgba(0,0,0,.025)});
+	@include box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
 	cursor: not-allowed;
 	width: auto;
 	height: auto;
@@ -178,8 +182,9 @@ textarea {
 // and clear the floating input if there is no label text
 
 .radio {
-	min-height: 18px; padding-left: 18px;
-	input[type="radio"] { float: left; margin-left: -18px; }
+	min-height: $baseLineHeight;
+	padding-left: 20px;
+	input[type="radio"] { float: left; margin-left: -20px; }
 	&.inline {
 		display: inline-block;
 		padding-top: 5px;
@@ -192,8 +197,9 @@ textarea {
 }
 
 .checkbox {
-	min-height: 18px; padding-left: 18px;
-	input[type="checkbox"] { float: left; margin-left: -18px; }
+	min-height: $baseLineHeight;
+	padding-left: 20px;
+	input[type="checkbox"] { float: left; margin-left: -20px; }
 	&.inline {
 		display: inline-block;
 		padding-top: 5px;
@@ -255,10 +261,17 @@ textarea[class*="span"],
 // Control row for multiple inputs per line
 .controls-row {
 	@include clearfix(); // Clear the float from controls
-	[class*="span"] {
-		float: left; // Float to collapse white-space for proper grid alignment
+	// Explicity set top padding on all checkboxes/radios, not just first-child
+	.checkbox, .radio {
+		&[class*="span"] { padding-top: 5px; }
 	}
 }
+
+// Float to collapse white-space for proper grid alignment
+.controls-row [class*="span"],
+// Redeclare the fluid grid collapse since we undo the float for inputs
+.row-fluid .controls-row [class*="span"] { float: left; }
+
 
 // DISABLED STATE
 
@@ -297,7 +310,7 @@ input, textarea, select {
 		border-color: #ee5f5b;
 		&:focus {
 			border-color: darken(#ee5f5b, 10%);
-			@include box-shadow(#{0 0 6px lighten(#ee5f5b, 20%)});
+			@include box-shadow(0 0 6px lighten(#ee5f5b, 20%));
 		}
 	}
 }
@@ -337,11 +350,9 @@ input, textarea, select {
 .input-append,
 .input-prepend {
 	margin-bottom: 5px;
-	font-size: 0;
+	font-size: 0; // white space collapse hack
 	white-space: nowrap; // Prevent span and input from separating
-
-	input,
-	select,
+	input, select,
 	.uneditable-input {
 		position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
 		margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
@@ -352,6 +363,7 @@ input, textarea, select {
 		// Make input on top when focused so blue border and shadow always show
 		&:focus { z-index: 2; }
 	}
+	.dropdown-menu { font-size: $baseFontSize; }
 	.add-on {
 		display: inline-block;
 		width: auto;
@@ -381,27 +393,36 @@ input, textarea, select {
 	.add-on, .btn { margin-right: -1px; }
 	.add-on:first-child,
 	.btn:first-child { @include border-radius($inputBorderRadius 0 0 $inputBorderRadius); }
+	// Remove all border-radius for inputs with both prepend and append
+	&.input-append {
+		input, select, .uneditable-input {
+			@include border-radius(0);
+			+ .btn-group .btn { @include border-radius(0 $inputBorderRadius $inputBorderRadius 0); }
+		}
+		.add-on, .btn {
+			&:first-child {
+				margin-right: -1px;
+				@include border-radius($inputBorderRadius 0 0 $inputBorderRadius);
+			}
+			&:last-child {
+				margin-left: -1px;
+				@include border-radius(0 $inputBorderRadius $inputBorderRadius 0);
+			}
+		}
+	}
 }
 .input-append {
-	input, select,
-	.uneditable-input { @include border-radius($inputBorderRadius 0 0 $inputBorderRadius); }
-	.add-on, .btn { margin-left: -1px; }
-	.add-on:last-child,
-	.btn:last-child { @include border-radius(0 $inputBorderRadius $inputBorderRadius 0); }
-}
-// Remove all border-radius for inputs with both prepend and append
-.input-prepend.input-append {
-	input, select,
-	.uneditable-input { @include border-radius(0); }
-	.add-on:first-child,
-	.btn:first-child {
-		margin-right: -1px;
+	input, select, .uneditable-input {
 		@include border-radius($inputBorderRadius 0 0 $inputBorderRadius);
+		+ .btn-group .btn { @include border-radius(0 $inputBorderRadius $inputBorderRadius 0); }
 	}
-	.add-on:last-child,
-	.btn:last-child {
+	.add-on, .btn {
 		margin-left: -1px;
-		@include border-radius(0 $inputBorderRadius $inputBorderRadius 0);
+		&:last-child { @include border-radius(0 $inputBorderRadius $inputBorderRadius 0); }
+	}
+	.btn-group {
+		margin-left: -1px;
+		&:first-child { margin-left: 0; }
 	}
 }
 

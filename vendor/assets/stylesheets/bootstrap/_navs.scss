@@ -8,10 +8,12 @@
 	}
 	list-style: none;
 	// Make links block level
-	> li > a { display: block; }
-	> li > a:hover {
-		text-decoration: none;
-		background-color: $grayLighter;
+	> li > a {
+		display: block;
+		&:hover {
+			text-decoration: none;
+			background-color: $grayLighter;
+		}
 	}
 	// Redeclare pull classes because of specifity
 	> .pull-right { float: right; }
@@ -46,7 +48,7 @@
 		.caret, &.active .caret, a:hover .caret {
 			border-top-color: $white;
 			border-bottom-color: $white;
-			@include opacity(1);
+			@include opacity(100);
 		}
 	}
 	> .disabled > a {
@@ -98,7 +100,7 @@
 			background-color: $linkColor;
 		}
 	}
-	[class^="icon-"] { margin-right: 2px; }
+	[class^="icon-"], [class*=" icon-"] { margin-right: 2px; }
 	// Dividers (basically an hr) within the dropdown
 	.divider { @include nav-divider(); }
 }
@@ -144,7 +146,7 @@
 	> .active {
 		> a, > a:hover {
 			color: $gray;
-			background-color: $white;
+			background-color: $bodyBackground;
 			border: 1px solid #ddd;
 			border-bottom-color: transparent;
 			cursor: default;
