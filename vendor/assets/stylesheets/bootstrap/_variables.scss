@@ -44,6 +44,21 @@ $headingsFontFamily: inherit !default; // empty to use BS default, $baseFontFami
 $headingsFontWeight: bold !default;    // instead of browser default, bold
 $headingsColor: inherit !default; // empty to use BS default, $textColor
 
+// Component sizing
+// Based on 14px font-size and 20px line-height
+
+$fontSizeLarge: $baseFontSize * 1.25; // ~18px
+$fontSizeSmall: $baseFontSize * 0.85; // ~12px
+$fontSizeMini:  $baseFontSize * 0.75; // ~11px
+
+$paddingLarge: 11px 19px; // 44px
+$paddingSmall: 2px 10px;  // 26px
+$paddingMini: 1px 6px;   // 24px
+
+$baseBorderRadius: 4px;
+$borderRadiusLarge: 6px;
+$borderRadiusSmall: 3px;
+
 // Tables
 $tableBackground: transparent !default; // overall background-color
 $tableBackgroundAccent: #f9f9f9 !default; // for striping
@@ -76,9 +91,10 @@ $btnInverseBackgroundHighlight: $grayDarker !default;
 // Forms
 $inputBackground: $white !default;
 $inputBorder: #ccc !default;
-$inputBorderRadius: 3px !default;
+$inputBorderRadius: $baseBorderRadius !default;
 $inputDisabledBackground: $grayLighter !default;
 $formActionsBackground: #f5f5f5 !default;
+$inputHeight: $baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
 
 // Dropdowns
 $dropdownBackground: $white !default;
@@ -105,8 +121,8 @@ $zindexModalBackdrop: 1040 !default;
 $zindexModal: 1050 !default;
 
 // Sprite icons path
-$iconSpritePath: asset-url("glyphicons-halflings.png", image) !default;
-$iconWhiteSpritePath: asset-url("glyphicons-halflings-white.png", image) !default;
+$iconSpritePath: "../img/glyphicons-halflings.png" !default;
+$iconWhiteSpritePath: "../img/glyphicons-halflings-white.png" !default;
 
 // Input placeholder text color
 $placeholderText: $grayLight !default;
@@ -115,21 +131,22 @@ $placeholderText: $grayLight !default;
 $hrBorder: $grayLighter !default;
 
 // Horizontal forms & lists
-$horizontalComponentOffset: 180px !default;
+$horizontalComponentOffset: 180px;
 
 // Wells
 $wellBackground: #f5f5f5 !default;
 
 // Navbar
 $navbarCollapseWidth: 979px !default;
+$navbarCollapseDesktopWidth: $navbarCollapseWidth + 1;
 
 $navbarHeight: 40px !default;
 $navbarBackgroundHighlight: #fff !default;
 $navbarBackground: darken($navbarBackgroundHighlight, 5%) !default;
 $navbarBorder: darken($navbarBackground, 12%) !default;
 
-$navbarText: $gray !default;
-$navbarLinkColor: $gray !default;
+$navbarText: #777 !default;
+$navbarLinkColor: #777 !default;
 $navbarLinkColorHover: $grayDark !default;
 $navbarLinkColorActive: $gray !default;
 $navbarLinkBackgroundHover: transparent !default;

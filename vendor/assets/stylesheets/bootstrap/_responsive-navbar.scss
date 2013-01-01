@@ -3,8 +3,7 @@
 
 // TABLETS AND BELOW
 
-@media (max-width: 979px) {
-
+@media ($navbarCollapseWidth) {
 	// UNFIX THE TOPBAR
 
 	// Remove any padding from the body
@@ -83,7 +82,7 @@
 		.btn {
 			padding: 4px 10px 4px;
 			font-weight: normal;
-			@include border-radius(4px);
+			@include border-radius($baseBorderRadius);
 		}
 		// Buttons in the navbar
 		&.in .btn-group {
@@ -96,7 +95,7 @@
 			top: auto;
 			left: auto;
 			float: none;
-			display: block;
+			display: none;
 			max-width: none;
 			margin: 0 15px;
 			padding: 0;
@@ -115,25 +114,25 @@
 				top: 1px solid $navbarBackground;
 				bottom: 1px solid $navbarBackground;
 			}
-			@include box-shadow(#{inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)});
+			@include box-shadow(inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1));
 		}
 		// Hide everything in the navbar save .brand and toggle button
 		&.collapse {
 			overflow: hidden;
 			height: 0;
 		}
+		.open > .dropdown-menu { display: block; }
 	}
 	.navbar-inverse .nav-collapse {
-		.nav > li > a:hover,
-		.dropdown-menu a:hover { background-color: $navbarInverseBackground; }
+		.nav > li > a, .dropdown-menu a {
+			color: $navbarInverseLinkColor;
+			&:hover { background-color: $navbarInverseBackground; }
+		}
 		.navbar-form, .navbar-search {
 			border-top-color: $navbarInverseBackground;
 			border-bottom-color: $navbarInverseBackground;
 		}
 	}
-
-	// STATIC NAVBAR
-
 	.navbar-static .navbar-inner {
 		padding: {
 			left:  10px;
@@ -144,7 +143,7 @@
 
 // DEFAULT DESKTOP
 
-@media (min-width: 980px) {
+@media (min-width: $navbarCollapseDesktopWidth) {
 
 	// Required to make the collapsing navbar work on regular desktops
 	.nav-collapse.collapse {

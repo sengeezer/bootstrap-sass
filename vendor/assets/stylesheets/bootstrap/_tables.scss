@@ -10,14 +10,16 @@ table {
 		collapse: collapse;
 		spacing: 0;
 	}
-	[class*=span] {
-		display: table-cell;
-		float: none; // undo default grid column styles
-		margin-left: 0; // undo default grid column styles
-	}
-	// Change the column widths to account for td/th padding
-	@for $i from 1 through $gridColumns {
-		.span#{$i} { @include tableColumns($i); }
+	td, th {
+		[class*=span] {
+			display: table-cell;
+			float: none; // undo default grid column styles
+			margin-left: 0; // undo default grid column styles
+		}
+		// Change the column widths to account for td/th padding
+		@for $i from 1 through 12 {
+			.span#{$i} { @include tableColumns($i); }
+		}
 	}
 }
 
@@ -51,7 +53,6 @@ table {
 		tr {
 			&.success td { background-color: $successBackground; }
 			&.error td { background-color: $errorBackground; }
-			&.warning td { background-color: $warningBackground; }
 			&.info td { background-color: $infoBackground; }
 			tbody tr.warning td { background-color: $warningBackground; }
 		}
@@ -71,7 +72,7 @@ table {
 	border-collapse: separate; // Done so we can round those corners!
 	*border-collapse: collapse; // IE7 can't round corners anyway
 	border-left: 0;
-	@include border-radius(4px);
+	@include border-radius($baseBorderRadius);
 	th, td { border-left: 1px solid $tableBorder; }
 	// Prevent a double border
 	caption + thead tr:first-child th,
@@ -142,8 +143,12 @@ table {
 // TABLE CELL SIZING
 
 // Reset default grid behavior
-.row-fluid table [class*=span] {
-	display: table-cell;
-	float: none; // undo default grid column styles
-	margin-left: 0; // undo default grid column styles
+.row-fluid table {
+	td, th {
+		[class*=span] {
+			display: table-cell;
+			float: none; // undo default grid column styles
+			margin-left: 0; // undo default grid column styles
+		}
+	}
 }

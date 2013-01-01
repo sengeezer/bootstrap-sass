@@ -10,7 +10,7 @@
 	padding: 5px;
 	font-size: 11px;
 	@include opacity(0);
-	&.in { @include opacity(0.8); }
+	&.in { @include opacity(80); }
 	&.top {
 		margin-top: -3px;
 		.tooltip-arrow {
@@ -63,7 +63,7 @@
 		decoration: none;
 	}
 	background-color: $tooltipBackground;
-	@include border-radius(4px);
+	@include border-radius($baseBorderRadius);
 }
 
 .tooltip-arrow {
