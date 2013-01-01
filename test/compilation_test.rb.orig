@@ -1,0 +1,17 @@
+require 'test_helper'
+
+class CompilationTest < Test::Unit::TestCase
+  def test_compilation
+    path = 'vendor/assets/stylesheets'
+<<<<<<< HEAD
+    %w(bootstrap responsive).each do |file|	
+=======
+    %w(bootstrap bootstrap-responsive).each do |file|
+>>>>>>> 331b98a... Fix import in the test
+      engine = Sass::Engine.for_file("#{path}/#{file}.scss", syntax: :scss, load_paths: [path])
+      assert_nothing_raised do
+        engine.render
+      end
+    end
+  end
+end
