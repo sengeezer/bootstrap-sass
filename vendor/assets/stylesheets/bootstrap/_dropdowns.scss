@@ -123,6 +123,7 @@
 				color: transparent;
 				image: none; // Remove CSS gradient
 			}
+			@include reset-filter();
 			cursor: default;
 		}
 		
@@ -215,6 +216,7 @@
 // Typeahead
 
 .typeahead {
+	z-index: 1051;
 	margin-top: 2px; // give it some space to breathe
 	@include border-radius($baseBorderRadius);
 }

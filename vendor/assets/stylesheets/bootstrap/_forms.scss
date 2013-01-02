@@ -71,7 +71,6 @@ input {
 		*margin-top: 0; /* IE7 */
 		margin-top: 1px \9; /* IE8-9 */
 		line-height: normal;
-		cursor: pointer;
 		width: auto;
 		&:focus { @include tab-focus(); }
 	}
@@ -305,7 +304,7 @@ input {
 // Shares styles with the .control-group.error above
 
 input, textarea, select {
-	&:focus:required:invalid {
+	&:focus:invalid {
 		color: #b94a48;
 		border-color: #ee5f5b;
 		&:focus {
@@ -380,7 +379,7 @@ input, textarea, select {
 		background-color: $grayLighter;
 		border: 1px solid #ccc;
 	}
-	.add-on, .btn {
+	.add-on, .btn, .btn-group > .dropdown-toggle {
 		vertical-align: top;
 		@include border-radius(0);
 	}
@@ -397,7 +396,7 @@ input, textarea, select {
 	&.input-append {
 		input, select, .uneditable-input {
 			@include border-radius(0);
-			+ .btn-group .btn { @include border-radius(0 $inputBorderRadius $inputBorderRadius 0); }
+			+ .btn-group .btn:last-child { @include border-radius(0 $inputBorderRadius $inputBorderRadius 0); }
 		}
 		.add-on, .btn {
 			&:first-child {
@@ -416,7 +415,7 @@ input, textarea, select {
 		@include border-radius($inputBorderRadius 0 0 $inputBorderRadius);
 		+ .btn-group .btn { @include border-radius(0 $inputBorderRadius $inputBorderRadius 0); }
 	}
-	.add-on, .btn {
+	.add-on, .btn, .btn-group:last-child > .dropdown-toggle {
 		margin-left: -1px;
 		&:last-child { @include border-radius(0 $inputBorderRadius $inputBorderRadius 0); }
 	}
@@ -529,7 +528,7 @@ legend + .control-group {
 	// Remove bottom margin on block level help text since that's accounted for on .control-group
 	.help-block { margin-bottom: 0; }
 	// And apply it only to .help-block instances that follow a form control
-	input, select, textarea {
+	input, select, textarea, .uneditable-input, .input-prepend, .input-append {
 		+ .help-block { margin-top: $baseLineHeight / 2; }
 	}
 	// Move over buttons in .form-actions to align with .controls

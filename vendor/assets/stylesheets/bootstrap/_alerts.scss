@@ -21,23 +21,31 @@
 	}
 }
 
+.alert, .alert h4 {
+  // Specified for the h4 to prevent conflicts of changing $headingsColor
+  color: $warningText;
+}
+
 // Alternate styles
 
 .alert-success {
 	background-color: $successBackground;
 	border-color: $successBorder;
 	color: $successText;
+	h4 { color: $successText; }
 }
 .alert-danger,
 .alert-error {
 	background-color: $errorBackground;
 	border-color: $errorBorder;
 	color: $errorText;
+	h4 { color: $errorText; }
 }
 .alert-info {
 	background-color: $infoBackground;
 	border-color: $infoBorder;
 	color: $infoText;
+	h4 { color: $infoText; }
 }
 
 // Block alerts
