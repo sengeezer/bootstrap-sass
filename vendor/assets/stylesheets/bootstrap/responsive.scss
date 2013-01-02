@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.2.1
+ * Bootstrap Responsive v2.2.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -11,11 +11,15 @@
 
 // Responsive
 // For phone and tablet devices
-// -------------------------------------------------------------
 
+// IE10 Metro responsive
+// Required for Windows 8 Metro split-screen snapping with IE10
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+
+@-ms-viewport{ width: device-width; }
 
 // REPEAT VARIABLES & MIXINS
-// -------------------------
+
 // Required since we compile the responsive stuff separately
 
 @import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
@@ -23,13 +27,11 @@
 
 
 // RESPONSIVE CLASSES
-// ------------------
 
 @import "bootstrap/responsive-utilities";
 
 
 // MEDIA QUERIES
-// ------------------
 
 // Large desktops
 @import "bootstrap/responsive-1200px-min";
@@ -42,7 +44,6 @@
 
 
 // RESPONSIVE NAVBAR
-// ------------------
 
 // From 979px and below, show a button to toggle navbar contents
 @import "bootstrap/responsive-navbar";
