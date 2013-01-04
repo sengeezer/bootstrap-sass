@@ -98,7 +98,7 @@
 			style: solid;
 		}
 	}
-	.arrow
+	.arrow {
 		border-width: $popoverArrowOuterWidth;
 		&:after {
 			border-width: $popoverArrowWidth;

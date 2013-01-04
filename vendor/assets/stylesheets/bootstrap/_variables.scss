@@ -213,7 +213,7 @@ $popoverArrowColor: #fff !default;
 $popoverTitleBackground: darken($popoverBackground, 3%) !default;
 
 // Special enhancement for popovers
-$popoverArrowOuterWidth: $popoverArrowWidth + 1px !default;
+$popoverArrowOuterWidth: $popoverArrowWidth + 1 !default;
 $popoverArrowOuterColor: rgba(0,0,0,.25) !default;
 
 // GRID
