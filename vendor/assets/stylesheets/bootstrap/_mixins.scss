@@ -308,8 +308,8 @@
 	.navbar-fixed-top .container,
 	.navbar-fixed-bottom .container { @include grid-core-span($gridColumns, $gridColumnWidth, $gridGutterWidth); }
 	// generate .spanX and .offsetX
-	@include grid-core-spanX($gridColumns, $gridColumnWidth, $gridGutterWidth);
-	@include grid-core-offsetX($gridColumns, $gridColumnWidth, $gridGutterWidth);
+	@include grid-core-span-x($gridColumns, $gridColumnWidth, $gridGutterWidth);
+	@include grid-core-offset-x($gridColumns, $gridColumnWidth, $gridGutterWidth);
 }
 @mixin grid-core-span-x($gridColumns, $gridColumnWidth, $gridGutterWidth) {
 	@while $gridColumns > 0 {
