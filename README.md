@@ -8,6 +8,10 @@ Enjoy.
 
 This fork aims to provide a more concise version of the upstream. Eventually it will also include SUSY.
 
+### Branch notes
+
+This branch allows for the implementation of bootstrap-sass without generating conflicts with the plain plus version.
+
 ## Usage
 
 ### Rails
@@ -16,7 +20,7 @@ In your Gemfile:
 
 ```ruby
 gem 'sass-rails', '~> 3.2'
-gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'bootstrap-sass-plus', '~> 0.1'
 ```
 
 `bundle install` and restart your server to make the files available.
@@ -58,15 +62,15 @@ Simples.
 
 ### Compass
 
-`bootstrap-sass` 2.0 now comes with support for Compass, meaning projects that don't use Rails can get in on the fun Bootstrap web.
+`bootstrap-sass` 2.0 comes with support for Compass, meaning projects that don't use Rails can get in on the fun Bootstrap web.
 
 #### New project
 
 Install the gem and create a new project using the gem.
 
 ```console
-gem install bootstrap-sass
-compass create compass-test -r bootstrap-sass --using bootstrap
+gem install bootstrap-sass-plus
+compass create compass-test -r bootstrap-sass-plus --using bootstrap
 ```
 
 This will sort a few things out:
@@ -80,12 +84,12 @@ This will sort a few things out:
 Install the gem, add the require statement to the top of your configuration file, and install the extension.
 
 ```console
-gem install bootstrap-sass
+gem install bootstrap-sass-plus
 ```
 
 ```ruby
 # In config.rb
-require 'bootstrap-sass'
+require 'bootstrap-sass-plus'
 ```
 
 ```console
@@ -117,21 +121,8 @@ Some CSS3 properties take multiple values, such as `box-shadow` or `text-shadow`
 ### Responsive styling?
 As per the Bootstrap project we don't include the responsive styles by default. `@import "bootstrap-responsive";` to get them.
 
-## Versioning
-Bootstrap [claims](https://github.com/twitter/bootstrap#versioning) to use SemVer, although this is for values of public API that don't seem to include selectively requiring CSS components (see breaking change 2.0.2 -> 2.0.3). Since many people using bootstrap-sass *do* selectively require CSS components and I consider it part of the public API we can't really follow SemVer without becoming wildly out of sync with the Bootstrap version number, which is confusing for everyone involved. Further releases to bootstrap-sass will therefore have version numbers of the form `2.x.y.z`, where `2.x.y` is the release of Bootstrap we should be compatible with, and `z` is the patch version.
-
-Basically this means you should expect to append a separate patch version to the bootstrap version, which allows our versioning to stay more honest about changes.
-
 ### Bundler?
 
 ```ruby
-gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'bootstrap-sass-plus', '~> 0.1'
 ```
-
-Don't use the standard `~> 2.x.y`. Your apps may break.
-
-## Who
-bootstrap-sass is a project by [Thomas McDonald](https://twitter.com/#!/thomasmcdonald_), with support from [other awesome people](https://github.com/thomas-mcdonald/bootstrap-sass/graphs/contributors).
-
-## You're in good company
-bootstrap-sass is used to build some awesome projects, including [Diaspora](http://diasporaproject.org/), [rails_admin](https://github.com/sferik/rails_admin), Michael Hartl's [Rails Tutorial](http://railstutorial.org/), [gitlabhq](http://gitlabhq.com/) and [kandan](http://kandanapp.com/). Using bootstrap-sass? I'd love it if you let me know.
