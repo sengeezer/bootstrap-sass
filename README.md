@@ -1,8 +1,12 @@
 # Bootstrap for Sass
 
-[![Build Status](https://secure.travis-ci.org/twbs/bootstrap-sass.png?branch=master)](http://travis-ci.org/twbs/bootstrap-sass)
-
 `bootstrap-sass` is a Sass-powered version of [Bootstrap](http://github.com/twbs/bootstrap), ready to drop right into your Sass powered applications.
+
+## This fork
+
+The intent of this fork is to provide a cleaner and often more advanced style of SASS compared to the upstream. While this is about personal style, it is also about using the SASS language properly.
+
+I will also be adding Compass to be kinder to older browsers.
 
 ## Installation
 
