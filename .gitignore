@@ -4,4 +4,12 @@ bootstrap.css
 bootstrap-responsive.css
 Gemfile.lock
 .DS_Store
-*.orig
+.rbenv-version
+
+# Ignore bundler config
+/.bundle
+/vendor/cache
+/vendor/bundle
+tmp/
+test/screenshots/
+test/dummy/log/test.log

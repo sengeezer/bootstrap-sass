@@ -1,135 +1,214 @@
 # Bootstrap for Sass
 
-[![Build Status](https://secure.travis-ci.org/thomas-mcdonald/bootstrap-sass.png?branch=master)](http://travis-ci.org/thomas-mcdonald/bootstrap-sass)
+[![Build Status](https://secure.travis-ci.org/twbs/bootstrap-sass.png?branch=master)](http://travis-ci.org/twbs/bootstrap-sass)
 
-`bootstrap-sass` is an Sass-powered version of [Twitter's Bootstrap](http://github.com/twitter/bootstrap), ready to drop right into your Sass powered applications.
+`bootstrap-sass` is a Sass-powered version of [Bootstrap](http://github.com/twbs/bootstrap), ready to drop right into your Sass powered applications.
 
-Enjoy.
+## Installation
+
+Please see the appropriate guide for your environment of choice:
+
+### a. Rails
+
+`bootstrap-sass` is easy to drop into Rails with the asset pipeline.
+
+In your Gemfile you need to add the `bootstrap-sass` gem, and ensure that the `sass-rails` gem is present - it is added to new Rails applications by default.
+
+```ruby
+gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+gem 'bootstrap-sass', '~> 3.0.3.0'
+```
+
+`bundle install` and restart your server to make the files available through the pipeline.
+
+### b. Compass (no Rails)
+
+Install the gem
+```sh
+gem install bootstrap-sass
+```
+
+If you have an existing Compass project:
+
+```ruby
+# config.rb:
+require 'bootstrap-sass'
+```
+
+```console
+bundle exec compass install bootstrap
+```
+
+If you are creating a new Compass project, you can generate it with bootstrap-sass support:
+
+```console
+bundle exec compass create my-new-project -r bootstrap-sass --using bootstrap
+```
+
+This will create a new Compass project with the following files in it:
+
+* [_variables.scss](/templates/project/_variables.scss.erb) - all of bootstrap variables (override them here).
+* [styles.scss](/templates/project/styles.scss) - main project SCSS file, import `variables` and `bootstrap`.
+
+
+### c. Sass-only (no Compass, nor Rails)
+
+Require the gem, and load paths and Sass helpers will be configured automatically:
+
+```ruby
+require 'bootstrap-sass'
+```
+
+Using bootstrap-sass as a Bower package is still being tested. You can install it with:
+
+```bash
+bower install 'git://github.com/twbs/bootstrap-sass.git#v3.0.3-0'
+```
+
+#### JS and fonts
+
+If you are using Rails or Sprockets, see Usage.
+
+If none of Rails/Sprockets/Compass were detected the fonts will be referenced as:
+
+```sass
+"#{$icon-font-path}/#{$icon-font-name}.eot"
+```
+
+`$icon-font-path` defaults to `bootstrap/`.
+
+When not using an asset pipeline, you have to copy fonts and javascripts from the gem.
+
+```bash
+mkdir public/fonts
+cp -r $(bundle show bootstrap-sass)/vendor/assets/fonts/ public/fonts/
+mkdir public/javascripts
+cp -r $(bundle show bootstrap-sass)/vendor/assets/javascripts/ public/javascripts/
+```
+
+In ruby you can get the assets' location in the filesystem like this:
+
+```ruby
+Bootstrap.stylesheets_path
+Bootstrap.fonts_path
+Bootstrap.javascripts_path
+```
 
 ## Usage
 
-### Rails
+### Sass
 
-In your Gemfile:
+Import Bootstrap into a Sass file (for example, `application.css.scss`) to get all of Bootstrap's styles, mixins and variables!
+We recommend against using `//= require` directives, since none of your other stylesheets will be [able to access][antirequire] the Bootstrap mixins or variables.
 
-```ruby
-gem 'sass-rails', '~> 3.2'
-gem 'bootstrap-sass', '~> 2.3.1.0'
-```
-
-`bundle install` and restart your server to make the files available.
-
-#### Rails 4
-
-Due to a change in Rails that prevents images from being compiled in vendor and lib, you'll need to add the following line to your application.rb:
-
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
-
-#### CSS
-
-Import Bootstrap in an SCSS file (for example, `application.css.scss`) to get all of Bootstrap's styles, mixins and variables! We recommend against using `//= require` directives, since none of your other stylesheets will be [able to use](https://github.com/thomas-mcdonald/bootstrap-sass/issues/79#issuecomment-4428595) the awesome mixins that Bootstrap has defined.
-
-```css
+```scss
 @import "bootstrap";
 ```
 
-#### Javascripts
+You can also include optional bootstrap theme:
 
-You can include the Bootstrap javascripts through two methods. In this case, Sprocket's `//= require` directives are useful, since there is no better alternative.
+```scss
+@import "bootstrap/theme";
+```
 
-We have a helper that includes all available javascripts:
+The full list of bootstrap variables can be found [here](http://getbootstrap.com/customize/#less-variables). You can override these by simply redefining the variable before the `@import` directive, e.g.:
+
+```scss
+$navbar-default-bg: #312312;
+$light-orange: #ff8c00;
+$navbar-default-color: $light-orange;
+
+@import "bootstrap";
+```
+
+You can also import components explicitly. To start with a full list of modules copy this file from the gem:
+
+```bash
+# copy and prepend "bootstrap/" to the @import paths:
+sed 's/@import "/@import "bootstrap\//' \
+ $(bundle show bootstrap-sass)/vendor/assets/stylesheets/bootstrap/bootstrap.scss > \
+ app/assets/stylesheets/bootstrap-custom.scss
+```
+Comment out components you do not want from `bootstrap-custom`.
+
+In `application.sass`, replace `@import 'bootstrap'` with:
+
+```scss
+  @import 'bootstrap-custom';
+```
+
+### Javascript
+
+We have a helper that includes all Bootstrap javascripts. If you use Rails (or Sprockets separately), 
+put this in your Javascript manifest (usually in `application.js`) to load the files in the [correct order](/vendor/assets/javascripts/bootstrap.js):
 
 ```js
 // Loads all Bootstrap javascripts
 //= require bootstrap
 ```
 
-You can also load individual modules, provided you sort out any related dependencies.
+You can also load individual modules, provided you also require any dependencies. You can check dependencies in the [Bootstrap JS documentation][jsdocs].
 
 ```js
-//= require bootstrap-scrollspy
-//= require bootstrap-modal
-//= require bootstrap-dropdown
+//= require bootstrap/scrollspy
+//= require bootstrap/modal
+//= require bootstrap/dropdown
 ```
 
-Simples.
+---
 
-### Compass
+## Development and Contributing
 
-`bootstrap-sass` 2.0 now comes with support for Compass, meaning projects that don't use Rails can get in on the fun Bootstrap web.
+If you'd like to help with the development of bootstrap-sass itself, read this section.
 
-#### New project
+### Upstream Converter
 
-Install the gem and create a new project using the gem.
+Keeping bootstrap-sass in sync with upstream changes from Bootstrap used to be an error prone and time consuming manual process. With Bootstrap 3 we have introduced a converter that automates this.
 
-```console
-gem install bootstrap-sass
-compass create compass-test -r bootstrap-sass --using bootstrap
-```
+**Note: if you're just looking to *use* Bootstrap 3, see the [installation](#installation) section above.**
 
-This will sort a few things out:
+Upstream changes to the Bootstrap project can now be pulled in using the `convert` rake task.
 
-* You'll get a starting `styles.scss` ready for your alterations
-* You'll get a compiled stylesheet compiled & ready to drop into your application
-* We'll also copy the Bootstrap javascripts & images into their respective folders for you, absolutely free of charge! How cool is that?
+Here's an example run that would pull down the master branch from the main [twbs/bootstrap](https://github.com/twbs/bootstrap) repo:
+    
+    rake convert
+    
+This will convert the latest LESS to SASS and update to the latest JS.
+To convert a specific branch or version, pass the branch name or the commit hash as the first task argument:
+    
+    rake convert[e8a1df5f060bf7e6631554648e0abde150aedbe4]
 
-#### Existing project
+The latest converter script is located [here][converter] and does the following:
 
-Install the gem, add the require statement to the top of your configuration file, and install the extension.
+* Converts upstream bootstrap LESS files to its matching SCSS file.
+* Copies all upstream JavaScript into `vendor/assets/javascripts/bootstrap`
+* Generates a javascript manifest at `vendor/assets/javascripts/bootstrap.js`
+* Copies all upstream font files into `vendor/assets/fonts/bootstrap`
+* Sets `Bootstrap::BOOTSTRAP_SHA` in [version.rb][version] to the branch sha.
 
-```console
-gem install bootstrap-sass
-```
+This converter fully converts original LESS to SCSS. Conversion is automatic but requires instructions for certain transformations (see converter output).
+Please submit GitHub issues tagged with `conversion`.
 
-```ruby
-# In config.rb
-require 'bootstrap-sass'
-```
+## Credits
 
-```console
-compass install bootstrap
-```
+bootstrap-sass has a number of major contributors:
 
-You'll get the same benefits as those starting from scratch. Radical.
+<!-- feel free to make these link wherever you wish -->
+* [Thomas McDonald](https://twitter.com/thomasmcdonald_)
+* [Tristan Harward](http://www.trisweb.com)
+* Peter Gumeson
+* [Gleb Mazovetskiy](https://github.com/glebm)
 
-## Configuration
-Need to configure a variable or two? Simply define the value of the variable you want to change *before* importing Bootstrap. Sass will respect your existing definition rather than overwriting it with the Bootstrap defaults. A list of customisable variables can be found in the [Bootstrap documentation](http://twitter.github.com/bootstrap/customize.html#variables).
-
-```scss
-$btnPrimaryBackground: #f00;
-@import "bootstrap";
-```
-
-**Note**: It's important that the file you are importing is not named `bootstrap`, since this will cause an import loop. As a general rule, errors are something you should try to avoid.
-
-### Passing multiple values to mixins
-
-Some CSS3 properties take multiple values, such as `box-shadow` or `text-shadow`. To pass multiple values to the Bootstrap mixins, you must escape the values or else the Sass parser will choke on the commas. Here's how to escape the values in Sass:
-
-```scss
-.selector {
-  @include box-shadow(#{0 2px 5px rgba(0,0,0,.25) inset, 0 -2px 5px rgba(0,0,0,.25) inset});
-}
-```
-
-### Responsive styling?
-As per the Bootstrap project we don't include the responsive styles by default. `@import "bootstrap-responsive";` to get them.
-
-## Versioning
-Bootstrap [claims](https://github.com/twitter/bootstrap#versioning) to use SemVer, although this is for values of public API that don't seem to include selectively requiring CSS components (see breaking change 2.0.2 -> 2.0.3). Since many people using bootstrap-sass *do* selectively require CSS components and I consider it part of the public API we can't really follow SemVer without becoming wildly out of sync with the Bootstrap version number, which is confusing for everyone involved. Further releases to bootstrap-sass will therefore have version numbers of the form `2.x.y.z`, where `2.x.y` is the release of Bootstrap we should be compatible with, and `z` is the patch version.
-
-Basically this means you should expect to append a separate patch version to the bootstrap version, which allows our versioning to stay more honest about changes.
-
-### Bundler?
-
-```ruby
-gem 'bootstrap-sass', '~> 2.3.1.0'
-```
-
-Don't use the standard `~> 2.x.y`. Your apps may break.
-
-## Who
-bootstrap-sass is a project by [Thomas McDonald](https://twitter.com/#!/thomasmcdonald_), with support from [other awesome people](https://github.com/thomas-mcdonald/bootstrap-sass/graphs/contributors).
+and a [significant number of other contributors][contrib].
 
 ## You're in good company
-bootstrap-sass is used to build some awesome projects, including [Diaspora](http://diasporaproject.org/), [rails_admin](https://github.com/sferik/rails_admin), Michael Hartl's [Rails Tutorial](http://railstutorial.org/), [gitlabhq](http://gitlabhq.com/) and [kandan](http://kandanapp.com/). Using bootstrap-sass? I'd love it if you let me know.
+bootstrap-sass is used to build some awesome projects all over the web, including
+[Diaspora](http://diasporaproject.org/), [rails_admin](https://github.com/sferik/rails_admin),
+Michael Hartl's [Rails Tutorial](http://railstutorial.org/), [gitlabhq](http://gitlabhq.com/) and
+[kandan](http://kandanapp.com/).
+
+[converter]: https://github.com/twbs/bootstrap-sass/blob/3/tasks/converter.rb
+[version]: https://github.com/twbs/bootstrap-sass/blob/3/lib/bootstrap-sass/version.rb
+[contrib]: https://github.com/twbs/bootstrap-sass/graphs/contributors
+[antirequire]: https://github.com/twbs/bootstrap-sass/issues/79#issuecomment-4428595
+[jsdocs]: http://getbootstrap.com/javascript/#transitions
