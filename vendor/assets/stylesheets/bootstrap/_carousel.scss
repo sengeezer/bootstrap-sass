@@ -150,7 +150,7 @@
   text-align: center;
   @include text-shadow($carousel-text-shadow);
   & .btn {
-    text-shadow: none; // No shadow for button elements in carousel-caption
+    @include text-shadow(none); // No shadow for button elements in carousel-caption
   }
 }
 
