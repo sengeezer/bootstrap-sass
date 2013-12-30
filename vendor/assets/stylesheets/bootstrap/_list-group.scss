@@ -13,7 +13,6 @@
   padding-left: 0; // reset padding because ul and ol
 }
 
-
 // Individual list items
 //
 // Use on `li`s or `div`s within the `.list-group` parent.
@@ -26,25 +25,16 @@
   margin-bottom: -1px;
   background-color: $list-group-bg;
   border: 1px solid $list-group-border;
-
   // Round the first and last items
-  &:first-child {
-    @include border-top-radius($list-group-border-radius);
-  }
-  &:last-child {
+  &:first-child { @include border-top-radius($list-group-border-radius); }
+  &:last-child { 
     margin-bottom: 0;
     @include border-bottom-radius($list-group-border-radius);
   }
-
   // Align badges within list items
-  > .badge {
-    float: right;
-  }
-  > .badge + .badge {
-    margin-right: 5px;
-  }
+  > .badge { float: right; }
+  > .badge + .badge { margin-right: 5px; }
 }
-
 
 // Linked list items
 //
@@ -53,18 +43,12 @@
 
 a.list-group-item {
   color: $list-group-link-color;
-
-  .list-group-item-heading {
-    color: $list-group-link-heading-color;
-  }
-
+  .list-group-item-heading { color: $list-group-link-heading-color; }
   // Hover state
-  &:hover,
-  &:focus {
+  &:hover, &:focus {
     text-decoration: none;
     background-color: $list-group-hover-bg;
   }
-
   // Active class on item itself, not parent
   &.active,
   &.active:hover,
@@ -73,17 +57,11 @@ a.list-group-item {
     color: $list-group-active-color;
     background-color: $list-group-active-bg;
     border-color: $list-group-active-border;
-
     // Force color to inherit for custom content
-    .list-group-item-heading {
-      color: inherit;
-    }
-    .list-group-item-text {
-      color: $list-group-active-text-color;
-    }
+    .list-group-item-heading { color: inherit; }
+    .list-group-item-text { color: $list-group-active-text-color; }
   }
 }
-
 
 // Contextual variants
 //
@@ -94,7 +72,6 @@ a.list-group-item {
 @include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
 @include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
 @include list-group-item-variant(info, $state-info-bg, $state-info-text);
-
 
 // Custom content options
 //
