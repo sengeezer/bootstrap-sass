@@ -10,16 +10,12 @@
 .fade {
   opacity: 0;
   @include transition(opacity .15s linear);
-  &.in {
-    opacity: 1;
-  }
+  &.in { opacity: 1; }
 }
 
 .collapse {
   display: none;
-  &.in {
-    display: block;
-  }
+  &.in { display: block; }
 }
 .collapsing {
   position: relative;

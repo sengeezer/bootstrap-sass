@@ -31,13 +31,10 @@ label {
   font-weight: bold;
 }
 
-
 // Normalize form controls
 
 // Override content-box in Normalize (* isn't specific enough)
-input[type="search"] {
-  @include box-sizing(border-box);
-}
+input[type="search"] { @include box-sizing(border-box); }
 
 // Position radios and checkboxes better
 input[type="radio"],
@@ -48,9 +45,7 @@ input[type="checkbox"] {
 }
 
 // Set the height of file controls to match text inputs
-input[type="file"] {
-  display: block;
-}
+input[type="file"] { display: block; }
 
 // Make range inputs behave like textual form controls
 input[type="range"] {
@@ -59,10 +54,7 @@ input[type="range"] {
 }
 
 // Make multiple select elements height not fixed
-select[multiple],
-select[size] {
-  height: auto;
-}
+select[multiple], select[size] { height: auto; }
 
 // Fix optgroup Firefox bug per https://github.com/twbs/bootstrap/issues/7611
 select optgroup {
