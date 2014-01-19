@@ -616,6 +616,9 @@
 }
 @mixin make-md-column-push($columns) {
   @media (min-width: $screen-md) { left: percentage(($columns / $grid-columns)); }
+  @media (min-width: $screen-md-min) {
+    left: percentage(($columns / $grid-columns));
+  }
 }
 @mixin make-md-column-pull($columns) {
   @media (min-width: $screen-md-min) { right: percentage(($columns / $grid-columns)); }
