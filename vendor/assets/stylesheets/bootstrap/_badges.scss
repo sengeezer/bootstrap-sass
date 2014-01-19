@@ -16,13 +16,9 @@
   white-space: nowrap;
   text-align: center;
   background-color: $badge-bg;
-  border-radius: $badge-border-radius;
-
+  @include border-radius($badge-border-radius);
   // Empty badges collapse automatically (not available in IE8)
-  &:empty {
-    display: none;
-  }
-
+  &:empty { display: none; }
   // Quick fix for badges in buttons
   .btn & {
     position: relative;
@@ -36,8 +32,7 @@
 
 // Hover state, but only for links
 a.badge {
-  &:hover,
-  &:focus {
+  &:hover, &:focus {
     color: $badge-link-hover-color;
     text-decoration: none;
     cursor: pointer;
@@ -50,6 +45,4 @@ a.list-group-item.active > .badge,
   color: $badge-active-color;
   background-color: $badge-active-bg;
 }
-.nav-pills > li > a > .badge {
-  margin-left: 3px;
-}
+.nav-pills > li > a > .badge { margin-left: 3px; }
