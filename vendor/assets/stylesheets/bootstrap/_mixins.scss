@@ -584,6 +584,24 @@
   }
 }
 
+// Contextual backgrounds
+// -------------------------
+@mixin bg-variant($color) {
+  background-color: $color;
+  a:hover {
+    background-color: darken($color, 10%);
+  }
+}
+
+// Typography
+// -------------------------
+@mixin text-emphasis-variant($color) {
+  color: $color;
+  a:hover {
+    color: darken($color, 10%);
+  }
+}
+
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
@@ -715,7 +733,7 @@
   }
 }
 @mixin make-md-column-push($columns) {
-  @media (min-width: $screen-md) {
+  @media (min-width: $screen-md-min) {
     left: percentage(($columns / $grid-columns));
   }
 }
@@ -856,7 +874,7 @@
     border-color: $border-color;
     background-color: $background-color;
   }
-  // Optional feedack icon
+  // Optional feedback icon
   .form-control-feedback {
     color: $text-color;
   }
