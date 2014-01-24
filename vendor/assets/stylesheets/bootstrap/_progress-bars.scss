@@ -4,7 +4,6 @@
 
 
 // Bar animations
-// -------------------------
 
 // WebKit
 @-webkit-keyframes progress-bar-stripes {
@@ -18,10 +17,7 @@
   to    { background-position: 0 0; }
 }
 
-
-
 // Bar itself
-// -------------------------
 
 // Outer container
 .progress {
@@ -29,7 +25,7 @@
   height: $line-height-computed;
   margin-bottom: $line-height-computed;
   background-color: $progress-bg;
-  border-radius: $border-radius-base;
+  @include border-radius($border-radius-base);
   @include box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
 }
 
@@ -54,27 +50,11 @@
 }
 
 // Call animation for the active one
-.progress.active .progress-bar {
-  @include animation(progress-bar-stripes 2s linear infinite);
-}
-
-
+.progress.active .progress-bar { @include animation(progress-bar-stripes 2s linear infinite); }
 
 // Variations
-// -------------------------
 
-.progress-bar-success {
-  @include progress-bar-variant($progress-bar-success-bg);
-}
-
-.progress-bar-info {
-  @include progress-bar-variant($progress-bar-info-bg);
-}
-
-.progress-bar-warning {
-  @include progress-bar-variant($progress-bar-warning-bg);
-}
-
-.progress-bar-danger {
-  @include progress-bar-variant($progress-bar-danger-bg);
-}
+.progress-bar-success { @include progress-bar-variant($progress-bar-success-bg); }
+.progress-bar-info { @include progress-bar-variant($progress-bar-info-bg); }
+.progress-bar-warning { @include progress-bar-variant($progress-bar-warning-bg); }
+.progress-bar-danger { @include progress-bar-variant($progress-bar-danger-bg); }

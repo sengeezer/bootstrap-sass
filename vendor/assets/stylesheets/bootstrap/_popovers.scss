@@ -16,17 +16,15 @@
   background-clip: padding-box;
   border: 1px solid $popover-fallback-border-color;
   border: 1px solid $popover-border-color;
-  border-radius: $border-radius-large;
+  @include border-radius($border-radius-large);
   @include box-shadow(0 5px 10px rgba(0,0,0,.2));
-
   // Overrides for proper insertion
   white-space: normal;
-
   // Offset the popover to account for the popover arrow
-  &.top     { margin-top: -10px; }
-  &.right   { margin-left: 10px; }
-  &.bottom  { margin-top: 10px; }
-  &.left    { margin-left: -10px; }
+  &.top { margin-top: -10px; }
+  &.right { margin-left: 10px; }
+  &.bottom { margin-top: 10px; }
+  &.left { margin-left: -10px; }
 }
 
 .popover-title {
@@ -37,20 +35,17 @@
   line-height: 18px;
   background-color: $popover-title-bg;
   border-bottom: 1px solid darken($popover-title-bg, 5%);
-  border-radius: 5px 5px 0 0;
+  @include border-radius(5px 5px 0 0);
 }
 
-.popover-content {
-  padding: 9px 14px;
-}
+.popover-content { padding: 9px 14px; }
 
 // Arrows
 //
 // .arrow is outer, .arrow:after is inner
 
 .popover .arrow {
-  &,
-  &:after {
+  &, &:after {
     position: absolute;
     display: block;
     width: 0;
@@ -59,9 +54,7 @@
     border-style: solid;
   }
 }
-.popover .arrow {
-  border-width: $popover-arrow-outer-width;
-}
+.popover .arrow { border-width: $popover-arrow-outer-width; }
 .popover .arrow:after {
   border-width: $popover-arrow-width;
   content: "";
@@ -113,7 +106,6 @@
       border-bottom-color: $popover-arrow-color;
     }
   }
-
   &.left .arrow {
     top: 50%;
     right: -$popover-arrow-outer-width;
@@ -129,5 +121,4 @@
       bottom: -$popover-arrow-width;
     }
   }
-
 }
